@@ -1,15 +1,15 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 SAMEDIR=$(dirname "$0")
 BASEDIR=$(cd "$SAMEDIR/../.." ; pwd)
-DB="$BASEDIR/build/example.db"
+DB=`cygpath -w $BASEDIR/build/example.db`
 DB_URL="jdbc:derby:$DB;create=true"
 
 function create_db() {
     echo "creating $DB"
     mkdir -p $(dirname "$DB")
-    java -Dij.database="$DB_URL" \
-        -jar $BASEDIR/lib/javadb/derbyrun.jar \
+    /cygdrive/c/TOOLS/Java/jdk1.8.0_172/bin/java -Dij.database="$DB_URL" \
+        -jar `cygpath -w $BASEDIR/lib/javadb/derbyrun.jar` \
         ij "$SAMEDIR/example-db.ddl"
     echo
 }

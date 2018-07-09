@@ -1,5 +1,7 @@
 package book.example.persistence.tests;
 
+
+
 import book.example.persistence.model.*;
 
 import javax.persistence.EntityManager;
